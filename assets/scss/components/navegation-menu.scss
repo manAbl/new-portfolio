@@ -1,0 +1,22 @@
+@import '../helpers/_atomic-classes.scss';
+
+.container {
+  border-bottom: 1px solid #ddd;
+  padding: 2rem;
+  .inner-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    #logo {
+      font: {
+        size: 18px;
+        weight: 900;
+        family: 'Roboto Slab', serif;
+      }
+    }
+  }
+  .nav-items-wrapper {
+    align-items: center;
+    justify-content: flex-end;
+  }
+}

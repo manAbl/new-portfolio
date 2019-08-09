@@ -1,5 +1,8 @@
 module.exports = {
   mode: 'universal',
+  router: {
+    scrollBehavior: () => ({ x: 0, y: 0 })
+  },
   /*
    ** Headers of the page
    */
@@ -14,7 +17,14 @@ module.exports = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Merriweather:400,900|Roboto+Slab&display=swap'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -23,7 +33,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~/assets/scss/main.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -43,7 +53,24 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-fontawesome',
+    [
+      'nuxt-fontawesome',
+      {
+        component: 'fa',
+        imports: [
+          {
+            set: '@fortawesome/free-solid-svg-icons',
+            icons: ['fas']
+          },
+          {
+            set: '@fortawesome/free-brands-svg-icons',
+            icons: ['fab']
+          }
+        ]
+      }
+    ]
   ],
   /*
    ** Axios module configuration
