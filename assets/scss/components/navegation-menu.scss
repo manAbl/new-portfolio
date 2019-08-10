@@ -1,22 +1,100 @@
-@import '../helpers/_atomic-classes.scss';
+@import '../helpers/_atomic-classes';
+@import '../base/_variables';
 
 .container {
   border-bottom: 1px solid #ddd;
   padding: 2rem;
   .inner-wrapper {
     display: flex;
+    align-items: center;
     flex-flow: row nowrap;
     justify-content: space-between;
     #logo {
-      font: {
-        size: 18px;
-        weight: 900;
-        family: 'Roboto Slab', serif;
+      img {
+        width: 6rem;
+        height: 3rem;
       }
     }
+    .menu-active {
+      z-index: 5;
+      position: relative;
+    }
   }
-  .nav-items-wrapper {
-    align-items: center;
-    justify-content: flex-end;
+  .menu-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../assets/taryn-svg.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
+    padding: 2rem 4rem;
+
+    display: grid;
+    justify-content: space-between;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+
+    .links-wrapper {
+      width: 100%;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+    }
+    .container {
+      border: none;
+    }
+
+    .information {
+      h3 {
+        margin-bottom: 1rem;
+      }
+      img {
+        width: 6rem;
+        height: 6rem;
+      }
+      a {
+        display: block;
+        margin: 0.8rem;
+        color: $gray;
+        width: fit-content;
+        font: {
+          size: 15px;
+          weight: 500;
+        }
+        line-height: 2;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .links-wrapper,
+    .information {
+      grid-row: 2;
+    }
+
+    .links-wrapper {
+      grid-column: 3/5;
+      justify-self: end;
+      .link {
+        @extend .title;
+        a {
+          transition: color 320ms ease;
+          color: $gray;
+          &:hover {
+            color: $gray-lighter;
+          }
+        }
+      }
+    }
+    .information {
+      grid-column: 1/3;
+    }
   }
 }

@@ -14,6 +14,8 @@ module.exports = {
       body: ['Merriweather', 'serif']
     }
   },
-  variants: {},
+  variants: {
+    display: ['responsive', 'hover', 'focus']
+  },
   plugins: []
 }

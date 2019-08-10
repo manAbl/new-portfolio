@@ -3,6 +3,10 @@ module.exports = {
   router: {
     scrollBehavior: () => ({ x: 0, y: 0 })
   },
+  pageTransition: {
+    name: 'page',
+    mode: 'out-in'
+  },
   /*
    ** Headers of the page
    */

@@ -1,9 +1,39 @@
+@import '../css/animate';
+@import './base/_variables';
+
 body,
 html {
   font-family: 'Merriweather', serif;
+  img {
+    user-select: none !important;
+  }
   // font-family: 'Roboto Slab', serif;
 }
 
 ::selection {
   background-color: rgb(230, 32, 48);
+}
+
+.nuxt-link-exact-active {
+  color: $gray-lighter;
+  background: white;
+  position: relative;
+  transition: all 320ms ease;
+  &::after {
+    content: '';
+    width: 3rem;
+    height: 1rem;
+    position: absolute;
+    bottom: -0.2rem;
+    z-index: -1;
+    left: 0;
+    background: $gray;
+  }
+}
+
+.page-enter-active {
+  animation: fadeInUp 0.8s;
+}
+.page-leave-active {
+  animation: fadeOutDown 0.5s;
 }

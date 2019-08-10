@@ -22,14 +22,20 @@
   justify-content: center;
 }
 
-.hover-bg-blue {
+.hover {
+  transition: all 320ms ease-in;
   &:hover {
     @extend .pointer;
     background: #ddd;
   }
+  &:active {
+    transform: scale(1.2);
+    background: rgb(206, 37, 22) !important;
+  }
 }
 
 .title {
+  line-height: 1.8;
   font: {
     size: 18px;
     weight: 500;

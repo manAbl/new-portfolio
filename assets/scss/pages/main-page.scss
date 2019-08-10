@@ -19,9 +19,10 @@
     @extend .description;
     width: 24rem;
     img {
-      height: 20rem;
-      width: 24rem;
-      border-radius: 4rem 0 24rem 0;
+      width: 26rem;
+      height: 28rem;
+      background-color: #25253b;
+      // border-radius: 4rem 0 24rem 0;
     }
   }
 }

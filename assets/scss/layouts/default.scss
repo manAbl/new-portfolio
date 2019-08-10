@@ -1,0 +1,17 @@
+@import '../base/_variables';
+
+.contact-links {
+  display: flex;
+  flex-flow: column nowrap;
+  height: fit-content;
+  position: absolute;
+  left: 2rem;
+  bottom: 2rem;
+  a {
+    color: $gray;
+    transition: color 320ms ease;
+    &:hover {
+      color: $gray-lighter;
+    }
+  }
+}

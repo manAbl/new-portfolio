@@ -10,7 +10,7 @@
       </p>
     </div>
     <div class="img-description-wrapper">
-      <img src="/keyboard-2.jpg" />
+      <img src="~/assets/taryn.jpg" />
     </div>
   </div>
 </template>
