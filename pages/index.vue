@@ -9,14 +9,19 @@
         coding?
       </p>
     </div>
-    <div class="img-description-wrapper">
-      <img src="~/assets/taryn.jpg" />
+    <div class="svg-wrapper">
+      <c-svg name="dashboard" />
     </div>
   </div>
 </template>
 
 <script>
+import DashboardSVG from '../components/DashboardSVG'
+
 export default {
+  components: {
+    'c-svg': DashboardSVG
+  },
   head: {
     title: 'Vue Developer - Manuel Blanco - Colombia'
   }

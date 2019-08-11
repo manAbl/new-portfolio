@@ -2,11 +2,12 @@
 
 .contact-links {
   display: flex;
+  height: 7.2rem;
   flex-flow: column nowrap;
-  height: fit-content;
-  position: absolute;
-  left: 2rem;
-  bottom: 2rem;
+  justify-content: space-between;
+  position: fixed;
+  left: 2.25rem;
+  top: 45vh;
   a {
     color: $gray;
     transition: color 320ms ease;

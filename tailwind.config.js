@@ -11,7 +11,7 @@ module.exports = {
     },
     fontFamily: {
       display: ['Roboto Slab', 'serif'],
-      body: ['Merriweather', 'serif']
+      body: ['Blinker', 'sans-serif']
     }
   },
   variants: {

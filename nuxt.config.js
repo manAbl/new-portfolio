@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   mode: 'universal',
   router: {
@@ -27,6 +29,11 @@ module.exports = {
         rel: 'stylesheet',
         href:
           'https://fonts.googleapis.com/css?family=Merriweather:400,900|Roboto+Slab&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Blinker:600,700&display=swap'
       }
     ]
   },
@@ -57,6 +64,7 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/dotenv',
     '@nuxtjs/pwa',
     'nuxt-fontawesome',
     [
