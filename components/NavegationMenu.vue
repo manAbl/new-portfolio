@@ -7,7 +7,7 @@
         </nuxt-link>
         <menu-opener :class="{ active: isMenuOpen }" @click="toggleMenu" />
       </div>
-      <transition :css="false" @enter="enterEl" @leave="leaveEl">
+      <transition :css="false" @enter="enterMenu" @leave="leaveMenu">
         <ul v-show="isMenuOpen" class="menu-wrapper">
           <div class="information container">
             <h3 class="title md">
@@ -63,13 +63,18 @@ export default {
       } else return ''
     }
   },
+  watch: {
+    isMenuOpen(isOpen) {
+      if (isOpen) this.enterLink()
+    }
+  },
   methods: {
     toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen
     },
-    enterEl(el, done) {
-      // eslint-disable-next-line
-      const scene = new Scene({
+    enterMenu() {
+      new Scene(
+        {
           '.menu-wrapper': {
             0: {
               transform: 'translateY(-100%)',
@@ -92,9 +97,9 @@ export default {
         }
       ).playCSS()
     },
-    leaveEl(el, done) {
-      // eslint-disable-next-line
-      const scene = new Scene({
+    leaveMenu() {
+      new Scene(
+        {
           '.menu-wrapper': {
             0: {
               transform: 'translateY(0)',
@@ -114,6 +119,33 @@ export default {
           playSpeed: 2,
           selector: true,
           easing: 'ease'
+        }
+      ).playCSS()
+    },
+    enterLink() {
+      new Scene(
+        {
+          '.link': (i) => ({
+            0: {
+              transform: {
+                translateY: '100%'
+              }
+            },
+            1: {
+              transform: {
+                translateY: '0%'
+              }
+            },
+            options: {
+              delay: i * 0.2
+            }
+          })
+        },
+        {
+          easing: 'ease',
+          selector: true,
+          direction: 'alternate',
+          iterationCount: 1
         }
       ).playCSS()
     }

@@ -85,6 +85,8 @@
       justify-self: end;
       .link {
         @extend .title;
+        overflow: hidden;
+        height: 50rem;
         a {
           transition: color 320ms ease;
           color: $gray;
