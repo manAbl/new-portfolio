@@ -3,6 +3,7 @@ require('dotenv').config()
 module.exports = {
   mode: 'universal',
   router: {
+    middleware: 'pages',
     scrollBehavior: () => ({ x: 0, y: 0 })
   },
   pageTransition: {

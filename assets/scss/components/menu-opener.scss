@@ -1,58 +1,116 @@
 @import '../helpers/_atomic-classes';
 
+$transition: all 320ms ease-in-out;
+
 .hamburguer {
   position: relative;
   width: 20px;
   height: 20px;
-  z-index: 2000;
+  padding: 2rem;
+  @extend .circle;
+  transition: $transition;
+  transition-delay: .6s;
   &:hover {
     cursor: pointer;
   }
 
-  &:before,
-  &:after,
-  span:before,
-  span:after {
-    content: '';
-    opacity: 1;
-
-    left: 0;
-    width: 100%;
-    height: 12.5%;
-    display: block;
+  .tile {
     position: absolute;
-    background: black;
-    transition: ease-in-out all 0.15s;
+    width: 24px;
+    height: 2px;
+    background: #241f1c;
+    transition: $transition;
+
+    &.one {
+      transform: translateX(-50%) translateY(-250%);
+    }
+    &.two {
+    transform: translateX(-50%) translateY(250%);
+    }
   }
 
-  &:before {
-    top: 8%;
-  }
-  &:after {
-    bottom: 8%;
-  }
-  span:before,
-  span:after {
-    top: 50%;
-    transform: translateY(-50%);
+    &.active {
+    background: #241f1c;
+    transform: scale(1.1);
+
+    .tile {
+      background: white;
+    }
+    .one {
+      transform: translateY(14%) translateX(-50%);
+    }
+    .two {
+      transform: translateY(-14%) translateX(-50%);
+    }
   }
 
-  &.active {
-    &:before,
-    &:after {
-      opacity: 0;
+  // &:before,
+  // &:after,
+  // span:before,
+  // span:after {
+  //   content: '';
+  //   opacity: 1;
+
+  //   left: 0;
+  //   width: 40%;
+  //   height: 12.5%;
+  //   display: block;
+  //   position: absolute;
+  //   background: black;
+  //   transition: ease-in-out all 0.15s;
+  // }
+
+  // &:before {
+  //   top: 8%;
+  // }
+  // &:after {
+  //   bottom: 8%;
+  // }
+  // span:before,
+  // span:after {
+  //   top: 50%;
+  //   transform: translateY(-50%);
+  // }
+
+  // &.active {
+  //   &:before,
+  //   &:after {
+  //     opacity: 0;
+  //   }
+  //   &:before {
+  //     top: -5px;
+  //   }
+  //   &:after {
+  //     bottom: -5px;
+  //   }
+  //   span:before {
+  //     transform: rotate(45deg);
+  //   }
+  //   span:after {
+  //     transform: rotate(-45deg);
+  //   }
+  // }
+}
+
+.container {
+  border-bottom: 1px solid #ddd;
+  padding: 2rem;
+  position: sticky;
+  z-index: 1;
+  .inner-wrapper {
+    display: flex;
+    align-items: center;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    #logo {
+      img {
+        width: 6rem;
+        height: 3rem;
+      }
     }
-    &:before {
-      top: -5px;
-    }
-    &:after {
-      bottom: -5px;
-    }
-    span:before {
-      transform: rotate(45deg);
-    }
-    span:after {
-      transform: rotate(-45deg);
+    .menu-active {
+      z-index: 5;
+      position: relative;
     }
   }
 }

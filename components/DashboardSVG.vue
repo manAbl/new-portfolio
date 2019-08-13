@@ -1,8 +1,6 @@
 <template>
   <div class="svg-wrapper">
     <svg
-      id="cb7db7bb-371f-430c-ab8e-9f8547f8cfe6"
-      data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       width="100%"

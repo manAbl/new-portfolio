@@ -3,6 +3,6 @@
   "arrowParens": "avoid",
   "singleQuote": true,
   "printWidth": 80,
-  "endOfLine": "lf",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "endOfLine": "auto"
 }

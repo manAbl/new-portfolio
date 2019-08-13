@@ -1,15 +1,9 @@
 <template>
   <div class="nav-main-wrapper">
-    <div class="container mx-auto px-4">
-      <nav role="main-navegation">
-        <div class="inner-wrapper">
-          <nuxt-link id="logo" to="/" exact-active-class="anlk">
-            <img src="/logo-2.png" alt="logo-image" />
-          </nuxt-link>
-          <menu-opener :class="{ active: isMenuOpen }" @click="toggleMenu" />
-        </div>
-      </nav>
-    </div>
+    <menu-opener
+      @toggle-menu="isMenuOpen = !isMenuOpen"
+      :is-menu-open="isMenuOpen"
+    />
     <transition :css="false" @enter="enterMenu" @leave="leaveMenu">
       <ul v-show="isMenuOpen" class="menu-wrapper">
         <div class="svg-wrapper">
@@ -77,7 +71,7 @@
           </svg>
         </div>
         <div class="container">
-          <div class="information container">
+          <div class="information">
             <h3 class="title md">
               Contact Details:
             </h3>
@@ -88,7 +82,7 @@
               +57 305 3648811
             </a>
           </div>
-          <div class="links-wrapper container">
+          <div class="links-wrapper">
             <li
               v-for="(link, i) in links"
               :key="i"
@@ -191,9 +185,9 @@ export default {
           }
         },
         {
-          playSpeed: 2,
+          playSpeed: 3,
           selector: true,
-          easing: 'ease-out'
+          easing: 'ease-in-out'
         }
       ).playCSS()
     },
