@@ -1,8 +1,8 @@
 <template>
   <div class="nav-main-wrapper">
     <menu-opener
-      @toggle-menu="isMenuOpen = !isMenuOpen"
       :is-menu-open="isMenuOpen"
+      @toggle-menu="isMenuOpen = !isMenuOpen"
     />
     <transition :css="false" @enter="enterMenu" @leave="leaveMenu">
       <ul v-show="isMenuOpen" class="menu-wrapper">
