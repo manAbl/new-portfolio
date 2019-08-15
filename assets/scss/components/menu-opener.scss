@@ -11,61 +11,55 @@ $transition: all 320ms ease-in-out;
   @extend .circle;
   transition-delay: .6s;
   transition: $transition;
-  &:hover {
-    cursor: pointer;
-    transition: all 320ms ease-in;
-    // &::after {
-    //   content: ' ';
-    //   width: 20px;
-    //   height: 15px;
-    //   position: absolute;
-    //   left: 0;
-    //   top: 0;
-    //   z-index: 1;
-    //   background: red;
-    //   transition: all 620ms ease-out;
-    //   transform: scale(2)
-    // }
-    .tile {
-      &.two {
-        transform: translateX(20deg)
-      }
-    }
-  }
-
+  display: flex;
+  justify-content: center;
   .tile {
     position: absolute;
     width: 24px;
     height: 2px;
+    display: flex;
+    justify-content: center;
     background: $charcoal;
     transition: $transition;
+    background: lighten($charcoal, 45%);
 
     &.one {
-      margin: .4rem 0;
-      // transform: translateX(-50%) translateY(-250%);
-    }
-    &.two {
-      // transform: translateX(-50%) translateY(250%);
+      margin: .6rem 0;
     }
   }
 
-    &.active {
+  &:hover {
+    cursor: pointer;
+    transition: all 320ms ease-in;
+
+    .one {
+      transform: translateX(-4px)
+    }
+    .two {
+      transform: translateX(4px)
+    }
+  }
+   &.active {
     background: $charcoal;
     transform: scale(1.1);
+    .one {
+      margin: 0;
+      transform: translateY(-.4rem);
+    }
+    .two {
+      transform: translateY(.4rem)
+    }
 
     &:hover {
-      .tile {
-        transform: translateY(14%) translateX(-50%) rotateX(30deg);
+      .one {
+        transform: translateY(-.4rem) translateX(-4px)
+      }
+        .two {
+        transform: translateY(.4rem) translateX(4px)
       }
     }
     .tile {
       background: white;
-    }
-    .one {
-      transform: translateY(14%) translateX(-50%);
-    }
-    .two {
-      transform: translateY(-14%) translateX(-50%);
     }
   }
 }
