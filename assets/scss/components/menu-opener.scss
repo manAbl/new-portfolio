@@ -1,3 +1,4 @@
+@import '../base/_variables';
 @import '../helpers/_atomic-classes';
 
 $transition: all 320ms ease-in-out;
@@ -8,31 +9,55 @@ $transition: all 320ms ease-in-out;
   height: 20px;
   padding: 2rem;
   @extend .circle;
-  transition: $transition;
   transition-delay: .6s;
+  transition: $transition;
   &:hover {
     cursor: pointer;
+    transition: all 320ms ease-in;
+    // &::after {
+    //   content: ' ';
+    //   width: 20px;
+    //   height: 15px;
+    //   position: absolute;
+    //   left: 0;
+    //   top: 0;
+    //   z-index: 1;
+    //   background: red;
+    //   transition: all 620ms ease-out;
+    //   transform: scale(2)
+    // }
+    .tile {
+      &.two {
+        transform: translateX(20deg)
+      }
+    }
   }
 
   .tile {
     position: absolute;
     width: 24px;
     height: 2px;
-    background: #241f1c;
+    background: $charcoal;
     transition: $transition;
 
     &.one {
-      transform: translateX(-50%) translateY(-250%);
+      margin: .4rem 0;
+      // transform: translateX(-50%) translateY(-250%);
     }
     &.two {
-    transform: translateX(-50%) translateY(250%);
+      // transform: translateX(-50%) translateY(250%);
     }
   }
 
     &.active {
-    background: #241f1c;
+    background: $charcoal;
     transform: scale(1.1);
 
+    &:hover {
+      .tile {
+        transform: translateY(14%) translateX(-50%) rotateX(30deg);
+      }
+    }
     .tile {
       background: white;
     }

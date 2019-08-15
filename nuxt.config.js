@@ -6,6 +6,10 @@ module.exports = {
     middleware: 'pages',
     scrollBehavior: () => ({ x: 0, y: 0 })
   },
+  server: {
+    port: 3002 || process.env.PORT,
+    host: 'localhost'
+  },
   pageTransition: {
     name: 'page',
     mode: 'out-in'
