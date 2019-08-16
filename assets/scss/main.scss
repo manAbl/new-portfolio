@@ -21,13 +21,13 @@ html {
   transition: all 320ms ease;
   &::after {
     content: '';
-    width: 3rem;
+    width: 3.4rem;
     height: 1rem;
     position: absolute;
     bottom: -0.2rem;
     z-index: -1;
     left: 0;
-    background: $gray;
+    background: $berry;
   }
 }
 

@@ -89,6 +89,7 @@
       .link {
         @extend .title;
         overflow: hidden;
+        z-index: 1;
         a {
           transition: color 320ms ease;
           color: $gray;
