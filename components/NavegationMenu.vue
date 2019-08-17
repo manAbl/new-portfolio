@@ -106,7 +106,7 @@ export default {
     toggleMenu(isJustClosingMenu) {
       if (isJustClosingMenu && this.isMenuOpen) {
         this.isJustClosingMenu = true
-      } else this.isJustClosingMenu = false
+      }
 
       this.isMenuOpen = !this.isMenuOpen
     },
@@ -209,7 +209,6 @@ export default {
     },
     async beforeLeaveMenu(el) {
       if (this.isJustClosingMenu) {
-        console.log('entered here')
         await this.animateSVGLeaveAlternative()
       } else await this.animateSVGLeave()
     },
