@@ -26,7 +26,6 @@
   transition: all 320ms ease-in;
   &:hover {
     @extend .pointer;
-    background: #ddd;
   }
   &:active {
     transform: scale(1.2);

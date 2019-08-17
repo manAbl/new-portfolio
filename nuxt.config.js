@@ -3,8 +3,7 @@ require('dotenv').config()
 module.exports = {
   mode: 'universal',
   router: {
-    middleware: 'pages',
-    scrollBehavior: () => ({ x: 0, y: 0 })
+    middleware: 'pages'
   },
   server: {
     port: 3002 || process.env.PORT,
