@@ -1,10 +1,12 @@
 <template>
   <div class="nav-main-wrapper">
-    <menu-opener
-      :is-menu-open="isMenuOpen"
-      @toggle-menu="isMenuOpen = !isMenuOpen"
-    />
-    <transition :css="false" @enter="enterMenu" @leave="leaveMenu">
+    <menu-opener :is-menu-open="isMenuOpen" @toggle-menu="toggleMenu(true)" />
+    <transition
+      :css="false"
+      @enter="enterMenu"
+      @leave="leaveMenu"
+      @before-leave="beforeLeaveMenu"
+    >
       <ul v-if="isMenuOpen" class="menu-wrapper">
         <div class="svg-wrapper">
           <svg
@@ -78,7 +80,8 @@ export default {
   },
   data: () => ({
     links,
-    isMenuOpen: false
+    isMenuOpen: false,
+    isJustClosingMenu: false
   }),
   computed: {
     menuOpenerStyles() {
@@ -95,26 +98,29 @@ export default {
   mounted() {
     document.addEventListener('keydown', e => {
       if (e.keyCode === 27) {
-        this.isMenuOpen = false
+        this.toggleMenu(true)
       }
     })
   },
   methods: {
-    toggleMenu() {
+    toggleMenu(isJustClosingMenu) {
+      if (isJustClosingMenu && this.isMenuOpen) {
+        this.isJustClosingMenu = true
+      } else this.isJustClosingMenu = false
+
       this.isMenuOpen = !this.isMenuOpen
     },
     async animateSVGLeave() {
-      // eslint-disable-next-line
       await new Scene(
         {
           '#line-svg': {
             0: {
               transform:
-                'translateX(150%) translateY(-32%) rotate(-330deg) scale(1)'
+                'translateX(150%) translateY(-32%) rotate(-330deg) scale(5)'
             },
             1: {
               transform:
-                'translateX(150%) translateY(-32%) rotate(-330deg) scale(5)'
+                'translateX(150%) translateY(-32%) rotate(-330deg) scale(12)'
             }
           }
         },
@@ -122,10 +128,33 @@ export default {
           playSpeed: 1.8,
           selector: true,
           easing: 'cubic-bezier(0.74, 0, 0.42, 1.47)',
-          direction: 'reverse',
+          direction: 'alternate',
           fillMode: 'forwards'
         }
-      ).playCSS()
+      ).play()
+    },
+    async animateSVGLeaveAlternative() {
+      await new Scene(
+        {
+          '#line-svg': {
+            0: {
+              transform:
+                'translateX(150%) translateY(-32%) rotate(-330deg) scale(5)'
+            },
+            1: {
+              transform:
+                'translateX(150%) translateY(-32%) rotate(-330deg) scale(1)'
+            }
+          }
+        },
+        {
+          playSpeed: 1.8,
+          selector: true,
+          easing: 'cubic-bezier(0.74, 0, 0.42, 1.47)',
+          direction: 'alternate',
+          fillMode: 'forwards'
+        }
+      ).play()
     },
     animateSVGEnter() {
       new Scene(
@@ -150,7 +179,7 @@ export default {
           easing: 'cubic-bezier(0.74, 0, 0.42, 1.47)',
           direction: 'alternate'
         }
-      ).playCSS()
+      ).play()
     },
     enterMenu(el, done) {
       this.animateSVGEnter()
@@ -176,35 +205,38 @@ export default {
           selector: true,
           easing: 'ease-in'
         }
-      ).playCSS()
+      ).play()
+    },
+    async beforeLeaveMenu(el) {
+      if (this.isJustClosingMenu) {
+        console.log('entered here')
+        await this.animateSVGLeaveAlternative()
+      } else await this.animateSVGLeave()
     },
     async leaveMenu(el, done) {
-      await this.animateSVGLeave().then(() => {
-        new Scene(
-          {
-            '.menu-wrapper': {
-              0: {
-                opacity: 1,
-                transform: 'translateY(0)'
-              },
-              1: {
-                opacity: 0,
-                transform: 'translateY(0)'
-              },
-              2: 1,
-              options: {
-                delay: 2
-              }
+      await new Scene(
+        {
+          '.menu-wrapper': {
+            0: {
+              opacity: 1,
+              transform: 'translateY(0)'
+            },
+            1: {
+              opacity: 0,
+              transform: 'translateY(0)'
+            },
+            2: 1,
+            options: {
+              delay: 1.4
             }
-          },
-          {
-            playSpeed: 2.4,
-            selector: true,
-            easing: 'cubic-bezier(0.74, 0, 0.42, 1.47)'
           }
-        ).playCSS()
-        done()
-      })
+        },
+        {
+          playSpeed: 2.4,
+          selector: true,
+          easing: 'cubic-bezier(0.74, 0, 0.42, 1.47)'
+        }
+      ).play()
     },
     enterLink() {
       new Scene(
@@ -231,7 +263,7 @@ export default {
           direction: 'alternate',
           iterationCount: 1
         }
-      ).playCSS()
+      ).play()
     }
   }
 }
