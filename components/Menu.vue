@@ -34,10 +34,13 @@
       </div>
       <div class="container">
         <div class="information">
-          <h3 class="title md">
+          <h3 class="title lg font-bold">
             Contact Details:
           </h3>
-          <a href="mailto:manuel.22.lamas@gmail.com">
+          <a
+            href="mailto:manuel.22.lamas@gmail.com"
+            class="font-semibold text-md"
+          >
             manuel.22.lamas@gmail.com
           </a>
           <a href="tel: +57 305 3648811">

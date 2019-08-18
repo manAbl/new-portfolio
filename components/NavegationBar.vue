@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import debounce from '../helpers/debounce'
 import MenuOpener from './MenuOpener'
 
 export default {
@@ -21,9 +22,9 @@ export default {
     }
   },
   methods: {
-    toggleMenu() {
+    toggleMenu: debounce(function() {
       this.$store.dispatch('toggleMenu')
-    }
+    }, 120)
   }
 }
 </script>
