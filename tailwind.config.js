@@ -9,13 +9,25 @@ module.exports = {
     container: {
       padding: '1.2rem'
     },
+    fontWeight: {
+      'extra-light': 100,
+      thin: 200,
+      light: 300,
+      normal: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+      'extra-bold': 800,
+      black: 900
+    },
     fontFamily: {
       display: ['Roboto Slab', 'serif'],
       body: ['Blinker', 'sans-serif']
     }
   },
   variants: {
-    display: ['responsive', 'hover', 'focus']
+    display: ['responsive', 'hover', 'focus'],
+    fontSmoothing: ['responsive', 'hover', 'focus']
   },
   plugins: []
 }

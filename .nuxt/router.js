@@ -4,7 +4,8 @@ import { interopDefault } from './utils'
 
 const _53738de7 = () => interopDefault(import('..\\pages\\about.vue' /* webpackChunkName: "pages_about" */))
 const _7601aa90 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
-const _de660ee0 = () => interopDefault(import('..\\pages\\projects.vue' /* webpackChunkName: "pages_projects" */))
+const _4744847a = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
+const _22fd1ab2 = () => interopDefault(import('..\\pages\\work.vue' /* webpackChunkName: "pages_work" */))
 const _732b68ac = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 Vue.use(Router)
@@ -90,9 +91,13 @@ export function createRouter() {
       component: _7601aa90,
       name: "blog"
     }, {
-      path: "/projects",
-      component: _de660ee0,
-      name: "projects"
+      path: "/contact",
+      component: _4744847a,
+      name: "contact"
+    }, {
+      path: "/work",
+      component: _22fd1ab2,
+      name: "work"
     }, {
       path: "/",
       component: _732b68ac,

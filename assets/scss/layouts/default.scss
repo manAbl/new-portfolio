@@ -1,4 +1,5 @@
 @import '../base/_variables';
+@import '../helpers/_atomic-classes';
 
 .contact-links {
   display: flex;
@@ -8,11 +9,27 @@
   position: fixed;
   left: 2.25rem;
   top: 45vh;
+  z-index: 100;
+  transition: $transition;
   a {
     color: $gray;
     transition: color 320ms ease;
     &:hover {
       color: $gray-lighter;
     }
+  }
+}
+
+.icon {
+  position: absolute;
+  right: 3rem;
+  bottom: 3.8rem;
+  color: $gray;
+  z-index: 100;
+  transition: $transition;
+  &:hover {
+    color: white;
+    background: darken($gray, 2%);
+    transform: scale(1.4);
   }
 }

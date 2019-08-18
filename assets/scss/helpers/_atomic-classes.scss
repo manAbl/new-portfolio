@@ -1,3 +1,5 @@
+@import '../base/_variables';
+
 .md-icon {
   font: {
     size: 14px;
@@ -13,6 +15,10 @@
   border-radius: 50%;
 }
 
+.text-base-color {
+  color: black
+}
+
 .icon-sm {
   width: 2rem;
   height: 2rem;
@@ -22,8 +28,12 @@
   justify-content: center;
 }
 
+.transition {
+  transition: $transition;
+}
+
 .hover {
-  transition: all 320ms ease-in;
+  @extend .transition;
   &:hover {
     @extend .pointer;
   }
@@ -32,12 +42,15 @@
     background: rgb(206, 37, 22) !important;
   }
 }
+.text-gray {
+  color: lighten($gray, 35%);
+}
 
 .title {
   line-height: 1.8;
   font: {
     size: 18px;
-    weight: 500;
+    family: 'Lexend Deca', sans-serif;
   }
   &.sm {
     font-size: 16px;
@@ -47,6 +60,12 @@
   }
   &.lg {
     font-size: 34px;
+  }
+  &.xl {
+    font-size: 52px;
+  }
+  &.xxl {
+    font-size: 62px;
   }
 }
 
@@ -60,4 +79,8 @@
   grid-template-rows: 1fr;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
+}
+
+.text-red {
+  color: $berry;
 }

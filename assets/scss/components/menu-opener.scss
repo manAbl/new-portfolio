@@ -11,6 +11,7 @@
   transition: $transition;
   display: flex;
   justify-content: center;
+
   .tile {
     position: absolute;
     width: 24px;
@@ -58,29 +59,6 @@
     }
     .tile {
       background: white;
-    }
-  }
-}
-
-.container {
-  border-bottom: 1px solid #ddd;
-  padding: 2rem;
-  position: sticky;
-  z-index: 1;
-  .inner-wrapper {
-    display: flex;
-    align-items: center;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    #logo {
-      img {
-        width: 6rem;
-        height: 3rem;
-      }
-    }
-    .menu-active {
-      z-index: 5;
-      position: relative;
     }
   }
 }

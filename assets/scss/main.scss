@@ -1,24 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Lexend+Deca|Righteous&display=swap');
+
 @import '../css/animate';
 @import './base/_variables';
 
 body,
 html {
-  font-family: 'Merriweather', serif;
   img {
     user-select: none !important;
   }
-  // font-family: 'Roboto Slab', serif;
 }
 
 ::selection {
-  background-color: $berry;
+  background-color: lighten($gray, 55%);
 }
 
 .nuxt-link-exact-active {
-  color: lighten($gray, 20%);
   background: transparent;
   position: relative;
-  transition: all 320ms ease;
   &::after {
     content: '';
     width: 3.4rem;
@@ -30,11 +28,21 @@ html {
     background: $berry;
     transition: all 320ms ease;
   }
+
+  &:hover {
+    color: lighten($gray, 40%);
+  }
+
   &:hover {
     &::after {
       height: .6rem;
     }
   }
+}
+
+a {
+  color: lighten($gray, 20%);
+  transition: all 320ms ease;
 }
 
 .page-enter-active {

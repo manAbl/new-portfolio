@@ -4,7 +4,7 @@
       <h1 class="title lg">
         Manuel Blanco
       </h1>
-      <p class="subtitle md">
+      <p class="subtitle text-2xl font-thin">
         Software developer passionate about coding, VR, writing && did I said
         coding?
       </p>
