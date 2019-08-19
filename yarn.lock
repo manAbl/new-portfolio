@@ -716,6 +716,11 @@
   resolved "https://registry.yarnpkg.com/@daybrush/utils/-/utils-0.10.0.tgz#a1463cb6c79c5affad9191f72c64785947b17257"
   integrity sha512-Rwy4w0eLd6JwMNOQX7c6UQ3a4407wE3i6A1K4pXqcMJ2AJw/+t3XXpKkrIaSmFqtp0jwXFSxReyv4iV3wsq2vQ==
 
+"@daybrush/utils@^0.7.1":
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/@daybrush/utils/-/utils-0.7.1.tgz#be259ce794d7bdda6195b24da1e9666bd845d25f"
+  integrity sha512-n4timHtzzOS9w6fQJ0SfynfNFNqqJeSoXoeFw2CS1PPD3GfWJZliSklFWMBJ5taDcNovyCWlZV7D4bdeGY0nPA==
+
 "@fortawesome/fontawesome-common-types@^0.2.21":
   version "0.2.21"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.21.tgz#f1c26ae24761cca583de7cafd1273ab4c70a4d87"
@@ -1435,6 +1440,15 @@
   integrity sha512-MI4Xx6LHs4Webyvi6EbspgyAb4D2Q2VtnCQ1blOJcoLS6mVa8lNN2rkIy1CVxfTUpoyIbCTkXES1rLXztFD1lg==
   dependencies:
     any-observable "^0.3.0"
+
+"@scenejs/effects@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@scenejs/effects/-/effects-1.0.1.tgz#7dca40be7b16e7ba5886047c96cfc519e8812def"
+  integrity sha512-WXZ2RTNOVZ/Z9o2d414cE3FkETNbnkhsL0c3MAiSe+sqvWfqItTmNKZZUekk7F8SOnx1zf+OnFLkHpDo60a6MA==
+  dependencies:
+    "@daybrush/utils" "^0.10.0"
+    keyframer "^0.1.0"
+    scenejs "^1.1.0"
 
 "@types/json-schema@^7.0.3":
   version "7.0.3"
@@ -5708,6 +5722,14 @@ kdbush@^3.0.0:
   resolved "https://registry.yarnpkg.com/kdbush/-/kdbush-3.0.0.tgz#f8484794d47004cc2d85ed3a79353dbe0abc2bf0"
   integrity sha512-hRkd6/XW4HTsA9vjVpY9tuXJYLSlelnkTmVFu4M9/7MIYQtFcHpbugAU7UbOfjOiVSVYl2fqgBuJ32JUmRo5Ew==
 
+keyframer@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/keyframer/-/keyframer-0.1.0.tgz#321cd4acdc767ef910f63a7fa9838d5890198700"
+  integrity sha512-PelLYEv7cVOIoTmKTifOr+QBa8b81ah8IMnJ+XGRGqIHNGXQTVq+7TnCQz9LyKatkGWA4hkO5Icrt9bBP+UmUA==
+  dependencies:
+    "@daybrush/utils" "^0.7.1"
+    scenejs "^1.0.0"
+
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
@@ -8701,7 +8723,7 @@ sax@>=0.6.0, sax@^1.2.4, sax@~1.2.4:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
-scenejs@^1.1.4:
+scenejs@^1.0.0, scenejs@^1.1.0, scenejs@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/scenejs/-/scenejs-1.1.4.tgz#8210e67e99a4c3bd002dfdb3cb23c3d80442f11b"
   integrity sha512-xhwPBPqbXYm3C0g26C09VPkaIOM1aZzPWSDPFAFsjXXbxr1k43Kf7MEcmAlbsg1WiB0REQuRQn0X+6b4SIf2jQ==

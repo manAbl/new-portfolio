@@ -5,7 +5,9 @@ import { interopDefault } from './utils'
 const _53738de7 = () => interopDefault(import('..\\pages\\about.vue' /* webpackChunkName: "pages_about" */))
 const _7601aa90 = () => interopDefault(import('..\\pages\\blog.vue' /* webpackChunkName: "pages_blog" */))
 const _4744847a = () => interopDefault(import('..\\pages\\contact.vue' /* webpackChunkName: "pages_contact" */))
-const _22fd1ab2 = () => interopDefault(import('..\\pages\\work.vue' /* webpackChunkName: "pages_work" */))
+const _a1ba445e = () => interopDefault(import('..\\pages\\playground.vue' /* webpackChunkName: "pages_playground" */))
+const _0ade300a = () => interopDefault(import('..\\pages\\work\\index.vue' /* webpackChunkName: "pages_work_index" */))
+const _3b5ed399 = () => interopDefault(import('..\\pages\\work\\agrimanager.vue' /* webpackChunkName: "pages_work_agrimanager" */))
 const _732b68ac = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
 Vue.use(Router)
@@ -95,9 +97,17 @@ export function createRouter() {
       component: _4744847a,
       name: "contact"
     }, {
+      path: "/playground",
+      component: _a1ba445e,
+      name: "playground"
+    }, {
       path: "/work",
-      component: _22fd1ab2,
+      component: _0ade300a,
       name: "work"
+    }, {
+      path: "/work/agrimanager",
+      component: _3b5ed399,
+      name: "work-agrimanager"
     }, {
       path: "/",
       component: _732b68ac,

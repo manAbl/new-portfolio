@@ -16,6 +16,10 @@ export const links = [
     path: '/blog'
   },
   {
+    text: 'Playground',
+    path: '/playground'
+  },
+  {
     text: 'Contact',
     path: '/contact'
   }

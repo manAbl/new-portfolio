@@ -10,6 +10,11 @@ html {
   }
 }
 
+body {
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+}
+
 ::selection {
   background-color: lighten($gray, 55%);
 }
