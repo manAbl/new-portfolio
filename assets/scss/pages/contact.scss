@@ -1,2 +1,18 @@
 @import '../base/_variables';
 @import '../helpers/_atomic-classes';
+
+.main-wrapper {
+  &.grid {
+    height: 80vh
+  }
+  .left {
+    margin-top: 20vh;
+    height: fit-content;
+    .information {
+      margin-top: 2rem;
+      .text-base {
+        margin-bottom: 1rem
+      }
+    }
+  }
+}
