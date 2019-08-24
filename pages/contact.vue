@@ -1,54 +1,116 @@
 <template>
-  <div class="container mx-auto main-wrapper grid">
-    <!-- <svg
-      id="contact-svg"
-      xmlns:svg="http://www.w3.org/2000/svg"
-      xmlns="http://www.w3.org/2000/svg"
-      width="100mm"
-      height="100vh"
-      viewBox="0 0 297 210"
-      version="1.1"
-    >
-      <g transform="translate(0,-87)">
-        <path
-          style="fill:#333333;stroke:none;stroke-width:0.26067781px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-          d="m 154.32402,69.130951 c 0,0 -44.30787,35.109779 -20.19475,52.957249 24.11313,17.84747 35.56686,31.01363 4.2198,39.2059 -31.34707,8.19229 -18.68767,32.47655 -9.04242,43.00948 9.64525,10.53293 37.97817,30.72106 22.60605,44.47238 -15.37212,13.75133 -28.93575,19.31038 -20.19474,37.743 8.74101,18.43263 1.50707,22.2362 1.50707,22.2362 l 176.93008,-5.85164 c 0,0 1.50707,-232.309662 0.30141,-232.309662 -1.20565,0 -156.1325,-1.462907 -156.1325,-1.462907 z"
-        />
-      </g>
-    </svg> -->
+  <div class="main-wrapper">
     <div class="left">
-      <h3 class="text-gray font-thin">Contact</h3>
-      <h1 class="title xl">
-        Let's get in touch<span class="text-red">:</span>
-      </h1>
+      <h3 class="text-gray font-thin uppercase">Contact</h3>
+      <h1 class="title xl">Get in touch<span class="text-red">:</span></h1>
       <div class="information">
         <h3 class="text-base text-red">
           Contact Details:
         </h3>
         <a
           href="mailto:manuel.22.lamas@gmail.com"
-          class="font-thin text-md block margin1"
+          class="font-thin text-md block margin1 hover:underline"
         >
           manuel.22.lamas@gmail.com
         </a>
         <a
           href="tel: +57 305 3648811"
-          class="font-thin text-md block margin-top-half-rem"
+          class="font-thin text-md block margin-top-half-rem hover:underline"
         >
           +57 305 3648811
         </a>
+        <footer>© {{ year }} Manuel Blanco</footer>
       </div>
     </div>
     <div class="right">
-      Something here
+      <div id="backgroundBlack" class="absolute" />
+      <!-- <img src="https://media.giphy.com/media/3o7TKo69Ajc6LuzOs8/giphy.gif" /> -->
+      <div id="gifWrapper" class="text-center">
+        <img src="https://media.giphy.com/media/3o7bukPWLMVsRz38J2/giphy.gif" />
+        <h1 class="title lg text-white">
+          Say hi.
+          <span class="text-red">Like this guy.</span>
+        </h1>
+        <a
+          href="mailto:manuel.22.lamas@gmail.com"
+          class="btn-like-link transition"
+        >
+          manuel.22.lamas@gmail.com
+          <fa
+            :icon="['fas', 'arrow-right']"
+            class="icon margin-left-1rem transition inline-block"
+          />
+        </a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Scene from 'scenejs'
+
 export default {
   head: {
-    title: "Let's get in touch! - Manuel Blanco"
+    title: 'Contact - Manuel Blanco'
+  },
+  computed: {
+    year() {
+      // eslint-disable-next-line
+      const d = new Date()
+      return d.getFullYear()
+    }
+  },
+  mounted() {
+    this.enterAnimation()
+  },
+  methods: {
+    enterAnimation() {
+      const r = new Scene(
+        {
+          '#backgroundBlack': i => ({
+            0: {
+              opacity: 0,
+              transform: {
+                translateY: '-200%'
+              }
+            },
+            1: {
+              opacity: 1,
+              transform: {
+                translateY: '0%'
+              }
+            }
+          })
+        },
+        {
+          easing: 'ease',
+          selector: true,
+          direction: 'forwards'
+        }
+      ).playCSS()
+      if (r.isEnded) this.giftEntrance()
+    },
+    giftEntrance() {
+      new Scene(
+        {
+          '#gifWrapper': i => ({
+            0: {
+              opacity: 0
+            },
+            1: {
+              opacity: 1,
+              display: 'block'
+            }
+          })
+        },
+        {
+          delay: 1,
+          easing: 'ease',
+          selector: true,
+          direction: 'forwards'
+        }
+      ).playCSS()
+    }
   }
 }
 </script>
