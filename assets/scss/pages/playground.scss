@@ -37,11 +37,25 @@
           transform: translateX(-6px)
         }
       }
-      &.previous {
+      &.next {
         margin-left: 1rem;
         &:hover {
           .icon {
             transform: translateX(6px)
+          }
+        }
+      }
+      &:disabled {
+        background: #ddd;
+        color: rgb(172, 168, 168);
+        border-color: rgb(172, 168, 168);
+        &:hover {
+          cursor: normal;
+          background: #ddd;
+          color: rgb(172, 168, 168);
+          border-color: rgb(172, 168, 168);
+          .icon {
+            transform: translateX(0)
           }
         }
       }

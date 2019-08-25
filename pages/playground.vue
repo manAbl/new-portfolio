@@ -26,16 +26,25 @@
     </div>
 
     <div class="actions-wrapper">
-      <button class="btn next" role="next-action">
+      <button
+        id="prevBtn"
+        class="btn previous"
+        role="previous-action"
+        @click="prev"
+      >
         <fa :icon="['fas', 'arrow-left']" class="icon" />
       </button>
-      <button class="btn previous" role="previous-action">
+      <button id="nextBtn" class="btn next" role="next-action" @click="next">
         <fa :icon="['fas', 'arrow-right']" class="icon" />
       </button>
     </div>
 
     <div class="cards-wrapper">
-      <div class="proxy-wrapper">
+      <carousel
+        ref="carousel"
+        class="proxy-wrapper"
+        :data-length="projects.length"
+      >
         <div
           v-for="(item, i) in projects"
           :key="i"
@@ -61,7 +70,7 @@
           </p>
           <script async src="https://static.codepen.io/assets/embed/ei.js" />
         </div>
-      </div>
+      </carousel>
     </div>
 
     <div id="work-reminder">
@@ -78,10 +87,12 @@
 import Scene from 'scenejs'
 import WorkCard from '../components/WorkCard'
 import ButtonOutline from '../components/ButtonOutline'
+import Carousel from '../components/Carousel'
 import projects from '../config/projects'
 
 export default {
   components: {
+    Carousel,
     'work-card': WorkCard,
     'btn-outline': ButtonOutline
   },
@@ -103,7 +114,6 @@ export default {
   }),
   mounted() {
     this.enterCards()
-    this.createObserver()
   },
   methods: {
     enterCards() {
@@ -134,20 +144,11 @@ export default {
         }
       ).playCSS()
     },
-    createObserver() {
-      const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 1.0
-      }
-
-      const handleObserver = (entries, observer) => {
-        entries.forEach(entry => console.log(entry))
-      }
-
-      // eslint-disable-next-line
-      const observer = new IntersectionObserver(handleObserver, options)
-      observer.observe(document.querySelector('.proxy-wrapper'))
+    next() {
+      this.$refs.carousel.moveCarousel(1)
+    },
+    prev() {
+      this.$refs.carousel.moveCarousel(-1)
     }
   }
 }
