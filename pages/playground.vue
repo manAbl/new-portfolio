@@ -103,6 +103,7 @@ export default {
   }),
   mounted() {
     this.enterCards()
+    this.createObserver()
   },
   methods: {
     enterCards() {
@@ -132,6 +133,21 @@ export default {
           direction: 'alternate'
         }
       ).playCSS()
+    },
+    createObserver() {
+      const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 1.0
+      }
+
+      const handleObserver = (entries, observer) => {
+        entries.forEach(entry => console.log(entry))
+      }
+
+      // eslint-disable-next-line
+      const observer = new IntersectionObserver(handleObserver, options)
+      observer.observe(document.querySelector('.proxy-wrapper'))
     }
   }
 }
