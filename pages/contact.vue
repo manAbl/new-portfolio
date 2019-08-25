@@ -31,16 +31,12 @@
           Say hi.
           <span class="text-red">Like this guy.</span>
         </h1>
-        <a
-          href="mailto:manuel.22.lamas@gmail.com"
-          class="btn-like-link transition"
-        >
-          manuel.22.lamas@gmail.com
-          <fa
-            :icon="['fas', 'arrow-right']"
-            class="icon margin-left-1rem transition inline-block"
-          />
-        </a>
+        <btn-outline
+          class="margin-top-2rem"
+          :options="buttonOutline"
+          mail
+          inverse
+        />
       </div>
     </div>
   </div>
@@ -48,11 +44,22 @@
 
 <script>
 import Scene from 'scenejs'
+import ButtonOutline from '../components/ButtonOutline'
 
 export default {
   head: {
     title: 'Contact - Manuel Blanco'
   },
+  components: {
+    'btn-outline': ButtonOutline
+  },
+  data: () => ({
+    buttonOutline: {
+      icon: ['fas', 'arrow-right'],
+      link: 'mailto:manuel.22.lamas@gmail.com',
+      label: 'manuel.22.lamas@gmail.com'
+    }
+  }),
   computed: {
     year() {
       // eslint-disable-next-line

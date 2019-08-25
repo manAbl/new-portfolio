@@ -1,0 +1,29 @@
+@import '../helpers/_atomic-classes';
+@import '../base/_variables';
+
+.button-link {
+  display: inline-block;
+  border: 1px solid rgb(102, 102, 102);
+  padding: 1.4rem;
+  width: fit-content;
+  border-radius: 54px;
+  .icon {
+    margin-left: .4rem
+  }
+  &:hover {
+    border-color: rgb(0, 0, 0);
+    .icon {
+      transform: translateX(8px);
+      color: black;
+    }
+  }
+  &.inverse {
+    &:hover {
+      border-color: white;
+      .icon {
+        transform: translateX(8px);
+        color: white;
+      }
+    }
+  }
+}

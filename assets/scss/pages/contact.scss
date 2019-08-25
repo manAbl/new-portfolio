@@ -39,7 +39,7 @@
       width: 50vw;
       z-index: -1;
     }
-    div:not(#backgroundBlack) {
+    #gifWrapper {
       height: fit-content;
       height: fit-content;
       margin-top: 40vh;
@@ -51,21 +51,6 @@
       }
       .title {
         margin-top: 2rem
-      }
-      .btn-like-link {
-        width: 22rem;
-        display: inline-block;
-        margin-top: 1rem;
-        border: 1px solid rgb(77, 75, 75);
-        border-radius: 20px;
-        padding: 1rem;
-        &:hover {
-          color: rgb(146, 141, 141);
-          border-color: rgb(146, 141, 141);
-          .icon {
-            transform: translateX(1rem)
-          }
-        }
       }
     }
   }

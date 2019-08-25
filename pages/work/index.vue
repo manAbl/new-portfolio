@@ -19,7 +19,7 @@
     <ul class="work-links-wrapper flex">
       <li class="work-link">
         <router-link to="/work/agrimanager">
-          <work-card :info="{}" />
+          <work-card :info="work" />
         </router-link>
       </li>
     </ul>
@@ -35,7 +35,14 @@ export default {
   },
   components: {
     'work-card': WorkCard
-  }
+  },
+  data: () => ({
+    work: {
+      title: 'Agrimanager',
+      type: 'Web Application',
+      url: '/work/agrimanager'
+    }
+  })
 }
 </script>
 

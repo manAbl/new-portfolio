@@ -1,5 +1,5 @@
 <template>
-  <div class="card flex cursor-pointer transition">
+  <nuxt-link class="card flex cursor-pointer transition" :to="info.url">
     <svg
       id="path"
       xmlns:svg="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@
       height="793.70081"
       viewBox="0 0 297 210"
     >
-      <g id="layer1" transform="translate(0,-87)">
+      <g transform="translate(0,-87)">
         <path
           style="fill:#1a1a1a;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
           d="m 43.905181,103.47619 c 0,0 -30.431961,11.1461 -17.476819,60.95573 13.438148,51.66669 1.705056,38.79002 5.115166,76.72751 5.02537,55.90726 60.955743,53.28298 72.891122,49.02035 14.91924,-6.39397 31.54353,-17.05056 54.13551,-30.26474 23.62029,-13.81563 43.31324,12.57565 75.02245,5.11517 50.1502,-11.79924 53.28299,-34.10112 30.691,-34.52738 -20.79605,-0.39238 20.88692,-54.13552 4.26264,-82.6952 -16.62429,-28.55968 -58.29159,-36.76525 -64.04616,-19.60813 -5.97033,17.80042 -58.29158,6.39396 -62.12795,-17.05056 C 138.53576,87.704434 94.76643,91.401469 82.268935,92.393334 55.414306,94.524655 43.905181,103.47619 43.905181,103.47619 Z"
@@ -17,13 +17,12 @@
     </svg>
 
     <img class="image" src="/pavel.jpg" />
-    <!-- :style="{ backgroundImage: `url(${item.url})` }" -->
     <div class="description text-left">
       <h1 class="title text-white lg font-medium">
-        Agrimanager
+        {{ info.title }}
       </h1>
       <h3 class="title text-red font-semibold">
-        Web Application
+        {{ info.type }}
       </h3>
     </div>
     <footer role="card-footer" aria-describedby="card-footer">
@@ -32,7 +31,7 @@
         View
       </p>
     </footer>
-  </div>
+  </nuxt-link>
 </template>
 
 <script>

@@ -15,6 +15,7 @@
         />
       </g>
     </svg>
+
     <div class="description">
       <h2 class="text-gray text-base">
         Just for fun
@@ -23,39 +24,82 @@
         Playground <span class="text-red">:</span>
       </h1>
     </div>
+
+    <div class="actions-wrapper">
+      <button class="btn next" role="next-action">
+        <fa :icon="['fas', 'arrow-left']" class="icon" />
+      </button>
+      <button class="btn previous" role="previous-action">
+        <fa :icon="['fas', 'arrow-right']" class="icon" />
+      </button>
+    </div>
+
     <div class="cards-wrapper">
-      <div v-for="(item, i) in projects" :key="i" class="card transition">
-        <img :src="item" class="project-img" />
+      <div class="proxy-wrapper">
+        <div
+          v-for="(item, i) in projects"
+          :key="i"
+          class="project-card transition"
+        >
+          <p
+            class="codepen"
+            data-height="500"
+            data-theme-id="dark"
+            data-default-tab="result"
+            data-user="manAbl"
+            :data-slug-hash="item.hash"
+            style="height: 100%; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
+            :data-pen-title="item.title"
+          >
+            <span>
+              See the Pen
+              <a :href="item.pen">{{ item.title }}</a>
+              by manAbl(
+              <a href="https://codepen.io/manAbl">@manAbl</a>
+              ) on <a href="https://codepen.io">CodePen</a>.
+            </span>
+          </p>
+          <script async src="https://static.codepen.io/assets/embed/ei.js" />
+        </div>
       </div>
     </div>
 
     <div id="work-reminder">
       <div class="title-wrapper inline-flex">
         <h1 class="title lg font-bold font-black">Recent work</h1>
-        <nuxt-link
-          to="/work"
-          class="button-link border-gray-100 text-center font-semibold"
-        >
-          All work
-          <fa
-            :icon="['fas', 'arrow-right']"
-            class="transition text-gray-400 icon-halo"
-          />
-        </nuxt-link>
+        <btn-outline :options="buttonOutline" />
       </div>
+      <work-card :info="work" class="work-card" />
     </div>
   </div>
 </template>
 
 <script>
 import Scene from 'scenejs'
+import WorkCard from '../components/WorkCard'
+import ButtonOutline from '../components/ButtonOutline'
+import projects from '../config/projects'
 
 export default {
+  components: {
+    'work-card': WorkCard,
+    'btn-outline': ButtonOutline
+  },
   head: {
     title: 'Playground - Manuel Blanco'
   },
   data: () => ({
-    projects: ['/klea.jpg', '/pavel.jpg', 'keyboard-2.jpg', 'keyboard.jpg']
+    projects,
+    buttonOutline: {
+      icon: ['fas', 'arrow-right'],
+      link: '/work',
+      label: 'All work'
+    },
+    work: {
+      title: 'Agrimanager',
+      type: 'Web Application',
+      url: '/work/agrimanager'
+    }
   }),
   mounted() {
     this.enterCards()
@@ -64,7 +108,7 @@ export default {
     enterCards() {
       new Scene(
         {
-          '.card': i => ({
+          '.project-card': i => ({
             0: {
               opacity: 0,
               transform: {

@@ -89,7 +89,8 @@
         z-index: 1;
         a {
           transition: color 320ms ease;
-          color: $gray;
+          // color: $gray;
+          color: rgb(195, 195, 195);
           &:hover {
             color: $gray-lighter;
           }

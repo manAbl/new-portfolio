@@ -13,16 +13,38 @@
     grid-column: 1/2;
     grid-row: 1/2;
     align-self: center;
-    height: 14rem;
+    height: 10rem;
   }
-  .card {
-    grid-row: auto;
-    width: 20rem;
-    height: 24rem;
-    padding: 1rem;
-    .project-img {
-      object-fit: contain;
-      height: 100%;
+
+  .actions-wrapper {
+    justify-self: end;
+    align-self: end;
+    grid-row: 1;
+    grid-column: 3/4;
+    .btn {
+      border: 1px solid black;
+      padding: 1rem;
+      width: 4rem;
+      transition: $transition;
+      .icon {
+        font-size: 20px;
+        transition: transform 320ms ease;
+      }
+      &:hover {
+        color: white;
+        background: black;
+        .icon {
+          transform: translateX(-6px)
+        }
+      }
+      &.previous {
+        margin-left: 1rem;
+        &:hover {
+          .icon {
+            transform: translateX(6px)
+          }
+        }
+      }
     }
   }
 }
@@ -30,44 +52,27 @@
 .cards-wrapper {
   grid-column: 1/4;
   padding: 2rem;
-  width: 100%;
+  width: 150%;
   grid-row: 2;
-  display: grid;
-  margin-bottom: 1rem;
-  grid-auto-flow: row dense;
-  grid-template-columns: repeat(3, 1fr);
-}
+  overflow: hidden;
+  justify-self: center;
+  margin-left: 60vw;
 
-#work-reminder {
-  grid-row: 3;
-  grid-column: 1 / span 4;
-  height: 86vh;
-  width: 100%;
-  text-align: center;
-  padding: 2rem;
-
-  .title-wrapper {
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
-    width: 28rem;
-    padding: 1rem;
-    .button-link {
-      display: inline-block;
-      border: 1px solid rgb(184, 184, 184);
-      padding: 1rem;
-      width: 8.4rem;
-      border-radius: 54px;
-      .icon-halo {
-        margin-left: .4rem
+  .proxy-wrapper {
+    display: flex;
+    flex-flow: nowrap;
+    width: 216vw;
+    .project-card {
+      width: 32rem;
+      background: #ddd;
+      height: fit-content;
+      border-radius: 12px;
+      margin-right: 2rem;
+      &:first-child {
+        margin: 0;
       }
-      &:hover {
-        border-color: rgb(70, 69, 69);
-        transform: scale(1.1);
-        .icon-halo {
-          transform: translateX(8px);
-          color: black;
-        }
+      &:nth-child(2) {
+        margin-left: 2rem;
       }
     }
   }
@@ -81,4 +86,34 @@
   height: 100vh;
   z-index: -1;
   width: 90vw;
+  grid-column: 1 / 4;
+  margin-top: 10vh
+}
+
+#work-reminder {
+  width: 100%;
+  grid-row: 3;
+  height: 86vh;
+  text-align: center;
+  padding: 4rem 2rem;
+  grid-column: 1 / span 4;
+
+  display: grid;
+  grid-gap: 6rem;
+  margin-bottom: 5rem;
+
+  .title-wrapper {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    width: 28rem;
+    padding: 1rem;
+    grid-column: 1 / 4;
+    justify-self: center
+  }
+
+  .work-card {
+    grid-column: 1 /4;
+    justify-self: center;
+  }
 }
