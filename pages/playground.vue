@@ -20,9 +20,7 @@
       <h2 class="text-gray text-base">
         Just for fun
       </h2>
-      <h1 class="text-5xl text-black font-bold">
-        Playground <span class="text-red">:</span>
-      </h1>
+      <h1 class="title xl">Playground <span class="text-red">:</span></h1>
     </div>
 
     <div class="actions-wrapper">

@@ -20,13 +20,14 @@
   }
 }
 
-.icon {
+.contact-icon {
   position: fixed;
   right: 3rem;
   bottom: 3.8rem;
   color: $gray;
   z-index: 100;
   transition: $transition;
+  border-radius: 50%;
   &:hover {
     color: white;
     background: darken($gray, 2%);

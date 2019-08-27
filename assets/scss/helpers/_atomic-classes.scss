@@ -104,3 +104,13 @@
 .margin-top-2rem {
   margin-top: 2rem
 }
+
+.divider {
+  display: inline-block;
+  width: calc(80vw - 20%);
+  margin-bottom: .2rem;
+  height: 2px;
+  &.small {
+    width: 1vw;
+  }
+}

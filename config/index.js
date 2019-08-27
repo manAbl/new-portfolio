@@ -27,6 +27,10 @@ export const links = [
 
 export const socialLinks = [
   {
+    url: 'https://dev.to/manabl',
+    icon: ['fab', 'dev']
+  },
+  {
     url: 'https://twitter.com/_manAbl',
     icon: ['fab', 'twitter']
   },

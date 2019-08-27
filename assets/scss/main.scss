@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lexend+Deca|Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lexend+Deca|Livvic:100,200,300,400,500,600,700,900&display=swap&subset=latin-ext,vietnamese');
 
 @import '../css/animate';
 @import './base/_variables';
@@ -13,6 +13,8 @@ html {
 body {
   overflow-y: scroll !important;
   overflow-x: hidden !important;
+  font-family: 'Livvic', sans-serif;
+  line-height: 1.8;
 }
 
 ::selection {
@@ -24,7 +26,7 @@ body {
   position: relative;
   &::after {
     content: '';
-    width: 3.4rem;
+    width: 1.4rem;
     height: .2rem;
     position: absolute;
     bottom: -0.2rem;
@@ -40,7 +42,7 @@ body {
 
   &:hover {
     &::after {
-      height: .6rem;
+      width: 3rem;
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{ 'bg-gray-100': $route.path === '/work/agrimanager' }">
     <c-menu />
     <c-navbar />
     <nuxt />

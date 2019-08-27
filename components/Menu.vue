@@ -43,11 +43,12 @@
             v-for="(link, i) in links"
             :key="i"
             class="mr-6 link lg"
-            @click="toggleMenu"
+            @click="toggleMenu($event, true)"
           >
             <nuxt-link
               class="text-blue-500 hover:text-blue-800"
               :to="link.path"
+              :style="linkStyles"
               exact
             >
               {{ link.text }}
@@ -66,7 +67,10 @@ import { links } from '../config'
 export default {
   name: 'Menu',
   data: () => ({
-    links
+    links,
+    linkStyles: {
+      color: '#323232'
+    }
   }),
   computed: {
     isMenuOpen() {
@@ -75,6 +79,7 @@ export default {
   },
   mounted() {
     document.addEventListener('keydown', this.handleClose)
+    this.enterLink()
   },
   beforeDestroy() {
     document.removeEventListener('keydown', this.handleClose)
@@ -132,10 +137,16 @@ export default {
           direction: 'alternate',
           fillMode: 'forwards'
         }
-      ).play()
+      )
+        .play()
+        .on('ended', () => {
+          this.linkStyles = {
+            color: 'rgb(58, 58, 58)'
+          }
+        })
     },
-    animateSVGEnter() {
-      new Scene(
+    async animateSVGEnter() {
+      const scene = await new Scene(
         {
           '#line-svg': {
             0: {
@@ -158,6 +169,12 @@ export default {
           direction: 'alternate'
         }
       ).play()
+
+      scene.on('ended', () => {
+        this.linkStyles = {
+          color: 'rgb(195, 195, 195)'
+        }
+      })
     },
     enterMenu(el, done) {
       this.animateSVGEnter()
@@ -183,13 +200,15 @@ export default {
           selector: true,
           easing: 'ease-in'
         }
-      ).play()
+      )
+        .play()
+        .on('ended', () => done())
     },
     async beforeLeaveMenu(el) {
       await this.animateSVGLeaveAlternative()
     },
-    async leaveMenu(el, done) {
-      const animation = await new Scene(
+    leaveMenu(el, done) {
+      new Scene(
         {
           '.menu-wrapper': {
             0: {
@@ -211,16 +230,14 @@ export default {
           selector: true,
           easing: 'cubic-bezier(0.74, 0, 0.42, 1.47)'
         }
-      ).play()
-
-      if (animation.ended) {
-        done()
-      }
+      )
+        .play()
+        .on('ended', () => done())
     },
     enterLink() {
       new Scene(
         {
-          '.link': i => ({
+          '.link a': i => ({
             0: {
               transform: {
                 translateY: '100%'
@@ -237,10 +254,8 @@ export default {
           })
         },
         {
-          easing: 'ease',
           selector: true,
-          direction: 'alternate',
-          iterationCount: 1
+          easing: 'cubic-bezier(0.74, 0, 0.42, 1.47)'
         }
       ).playCSS()
     }

@@ -20,10 +20,7 @@ module.exports = {
       'extra-bold': 800,
       black: 900
     },
-    fontFamily: {
-      display: ['Roboto Slab', 'serif'],
-      body: ['Blinker', 'sans-serif']
-    }
+    fontFamily: false
   },
   variants: {
     display: ['responsive', 'hover', 'focus'],
