@@ -3,12 +3,12 @@
 
 .contact-links {
   display: flex;
-  height: 7.2rem;
+  height: 10.2rem;
   flex-flow: column nowrap;
   justify-content: space-between;
   position: fixed;
   left: 2.25rem;
-  top: 45vh;
+  top: 38vh;
   z-index: 100;
   transition: $transition;
   a {

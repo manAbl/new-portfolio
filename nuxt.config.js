@@ -56,9 +56,9 @@ module.exports = {
   /*
    ** Nuxt.js dev-modules
    */
-  devModules: [
+  buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
+    ['@nuxtjs/eslint-module', { fix: true }],
     // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
     '@nuxtjs/tailwindcss'
   ],
@@ -68,9 +68,10 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/apollo',
     '@nuxtjs/dotenv',
     '@nuxtjs/pwa',
-    'nuxt-fontawesome',
+    ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
     [
       'nuxt-fontawesome',
       {
@@ -88,6 +89,44 @@ module.exports = {
       }
     ]
   ],
+  apollo: {
+    tokenName: process.env.APOLLO_KEY,
+    cookieAttributes: {
+      secure: false
+    },
+    defaultOptions: {
+      $query: {
+        loadingKey: 'loading',
+        fetchPolicy: 'cache-and-network'
+      }
+    },
+    // optional
+    errorHandler: '~/plugins/apollo-error-handler.js',
+    // required
+    clientConfigs: {
+      default: {
+        // required
+        httpEndpoint: 'http://localhost:4000',
+        // optional
+        // See https://www.apollographql.com/docs/link/links/http.html#options
+        httpLinkOptions: {
+          credentials: 'same-origin'
+        },
+        // LocalStorage token
+        tokenName: 'apollo-token', // optional
+        // Enable Automatic Query persisting with Apollo Engine
+        persisting: false, // Optional
+        // Use websockets for everything (no HTTP)
+        // You need to pass a `wsEndpoint` for this to work
+        websocketsOnly: false // Optional
+      },
+      test: {
+        httpEndpoint: 'http://localhost:5000',
+        wsEndpoint: 'ws://localhost:5000',
+        tokenName: 'apollo-token'
+      }
+    }
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

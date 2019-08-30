@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Meta from 'vue-meta'
+import ClientOnly from 'vue-client-only'
+import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
-import NoSsr from './components/no-ssr.js'
 import NuxtChild from './components/nuxt-child.js'
 import NuxtError from './components/nuxt-error.vue'
 import Nuxt from './components/nuxt.js'
@@ -13,10 +14,22 @@ import { createStore } from './store.js'
 
 import nuxt_plugin_workbox_5bdf7a90 from 'nuxt_plugin_workbox_5bdf7a90' // Source: .\\workbox.js (mode: 'client')
 import nuxt_plugin_templatesplugin24356f0c_24988f45 from 'nuxt_plugin_templatesplugin24356f0c_24988f45' // Source: .\\templates.plugin.24356f0c.js (mode: 'all')
+import nuxt_plugin_apollomodule_c9fe1730 from 'nuxt_plugin_apollomodule_c9fe1730' // Source: .\\apollo-module.js (mode: 'all')
 import nuxt_plugin_axios_ec62f6c8 from 'nuxt_plugin_axios_ec62f6c8' // Source: .\\axios.js (mode: 'all')
 
-// Component: <NoSsr>
-Vue.component(NoSsr.name, NoSsr)
+// Component: <ClientOnly>
+Vue.component(ClientOnly.name, ClientOnly)
+// TODO: Remove in Nuxt 3: <NoSsr>
+Vue.component(NoSsr.name, {
+  ...NoSsr,
+  render(h, ctx) {
+    if (process.client && !NoSsr._warned) {
+      NoSsr._warned = true
+      console.warn(`<no-ssr> has been deprecated and will be removed in Nuxt 3, please use <client-only> instead`)
+    }
+    return NoSsr.render(h, ctx)
+  }
+})
 
 // Component: <NuxtChild>
 Vue.component(NuxtChild.name, NuxtChild)
@@ -159,6 +172,10 @@ async function createApp(ssrContext) {
 
   if (typeof nuxt_plugin_templatesplugin24356f0c_24988f45 === 'function') {
     await nuxt_plugin_templatesplugin24356f0c_24988f45(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_apollomodule_c9fe1730 === 'function') {
+    await nuxt_plugin_apollomodule_c9fe1730(app.context, inject)
   }
 
   if (typeof nuxt_plugin_axios_ec62f6c8 === 'function') {

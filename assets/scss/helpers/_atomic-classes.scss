@@ -79,6 +79,10 @@
   grid-template-rows: 1fr;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
+  &.blog-variant {
+    grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
 }
 
 .text-red {

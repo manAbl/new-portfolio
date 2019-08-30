@@ -79,7 +79,6 @@ export default {
   },
   mounted() {
     document.addEventListener('keydown', this.handleClose)
-    this.enterLink()
   },
   beforeDestroy() {
     document.removeEventListener('keydown', this.handleClose)
@@ -110,7 +109,7 @@ export default {
         {
           playSpeed: 1.8,
           selector: true,
-          easing: 'cubic-bezier(0.74, 0, 0.42, 1.47)',
+          easing: 'ease-in',
           direction: 'alternate',
           fillMode: 'forwards'
         }
@@ -233,31 +232,6 @@ export default {
       )
         .play()
         .on('ended', () => done())
-    },
-    enterLink() {
-      new Scene(
-        {
-          '.link a': i => ({
-            0: {
-              transform: {
-                translateY: '100%'
-              }
-            },
-            1: {
-              transform: {
-                translateY: '0%'
-              }
-            },
-            options: {
-              delay: i * 0.2
-            }
-          })
-        },
-        {
-          selector: true,
-          easing: 'cubic-bezier(0.74, 0, 0.42, 1.47)'
-        }
-      ).playCSS()
     }
   }
 }

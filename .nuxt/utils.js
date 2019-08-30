@@ -98,15 +98,15 @@ export function flatMapComponents(route, fn) {
   }))
 }
 
-export function resolveRouteComponents(route) {
+export function resolveRouteComponents(route, fn) {
   return Promise.all(
-    flatMapComponents(route, async (Component, _, match, key) => {
+    flatMapComponents(route, async (Component, instance, match, key) => {
       // If component is a function, resolve it
       if (typeof Component === 'function' && !Component.options) {
         Component = await Component()
       }
-      match.components[key] = sanitizeComponent(Component)
-      return match.components[key]
+      match.components[key] = Component = sanitizeComponent(Component)
+      return typeof fn === 'function' ? fn(Component, instance, match, key) : Component
     })
   )
 }
@@ -138,7 +138,7 @@ export async function setContext(app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {"MAPBOX_ACCESS_TOKEN":"pk.eyJ1IjoibWFuYWJsIiwiYSI6ImNqejdmaTMwNDB2NHQzZm9lZm9nNXdtZncifQ.HeOYlhdVxejUD6gr8T4b0w"}
+      env: {"MAPBOX_ACCESS_TOKEN":"pk.eyJ1IjoibWFuYWJsIiwiYSI6ImNqejdmaTMwNDB2NHQzZm9lZm9nNXdtZncifQ.HeOYlhdVxejUD6gr8T4b0w","APOLLO_KEY":"manAbl-667:YAsSnr0FUb9vLX7K89XiZg"}
     }
     // Only set once
     if (context.req) {

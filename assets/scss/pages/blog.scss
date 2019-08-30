@@ -1,0 +1,41 @@
+@import '../base/_variables';
+@import '../helpers/_atomic-classes';
+
+.container {
+  &.grid {
+    padding: 1rem;
+    grid-gap: 3.2rem;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+    height: fit-content;
+    justify-items: center;
+    grid-template-rows: auto 1fr;
+  }
+  .header {
+    .title {
+      margin: 0 0 2rem;
+    }
+    display: flex;
+    align-items: flex-start;
+    flex-flow: column nowrap;
+    .tags-wrapper {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+    }
+  }
+}
+
+
+.searcher {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.right {
+  margin-top: 2.4rem;
+  .box-post {
+    width: 22rem;
+    height: fit-content;
+  }
+}
