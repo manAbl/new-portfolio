@@ -1,0 +1,28 @@
+@import '../base/_variables';
+@import '../helpers/_atomic-classes';
+
+.error-page {
+  width: 100%;
+  &.grid {
+    justify-items: stretch;
+  }
+
+  .svg-not-found {
+    grid-column: 1/3;
+    grid-row: 1;
+    margin-left: -12rem;
+  }
+  .button-wrapper {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 69px;
+    color: #323232;
+    align-self: center;
+    margin-left: -12rem;
+    p {
+      display: inline-block;
+      width: 86%;
+      margin-left: 5rem;
+    }
+  }
+}

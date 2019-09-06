@@ -38,9 +38,10 @@
       class="right flex items-center flex-wrap flex-row content-start justify-center"
     >
       <div
-        v-for="card in 10"
+        v-for="card in posts"
         :key="card"
         class="box-post m-2 hover:shadow cursor-pointer p-4 border-solid border border-gray-200"
+        @click="$router.push(card.url)"
       >
         <div
           class="mb-4 w-full h-48 bg-center bg-no-repeat bg-cover"
@@ -49,19 +50,13 @@
         <div
           class="border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
         >
-          <div class="mb-8">
-            <div class="text-gray-900 title md">
-              Can coffee make you a better developer?
-            </div>
-            <p class="text-gray-700 text-base">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Voluptatibus quia, nulla! Maiores et perferendis eaque,
-              exercitationem praesentium nihil.
-            </p>
+          <div class="mb-8 mt-10">
+            <div class="text-gray-900 title md">{{ card.title }}</div>
+            <p class="text-gray-700 text-base">{{ card.description }}</p>
           </div>
           <div class="flex items-center">
             <div class="text-sm">
-              <p class="text-gray-600">Aug 18</p>
+              <p class="text-gray-600">{{ card.date }}</p>
             </div>
           </div>
         </div>
@@ -78,14 +73,24 @@ export default {
     title: 'Blog - Manuel Blanco'
   },
   data: () => ({
-    tags: ['Code', 'Design', 'Personal', 'Popular', 'Tools']
+    tags: ['All', 'Code', 'Design', 'Personal', 'Popular', 'Tools'],
+    currentTab: 'All',
+    posts: [
+      {
+        title: 'Writing your first bash script',
+        description:
+          'Bash scripting is an extremely useful and powerful part of system administration and development. It might seem scary the first time you do it as it was for me but bear with me as this is not meant to be an extensive guide to bash scripting, but just a straightforward guide to getting started with making your first script and learning some basic bash syntax.',
+        date: 'Aug 28',
+        url: '/blog/Writing-your-first-bash-script'
+      }
+    ]
   }),
   mounted() {
     this.enterCards()
   },
   methods: {
     filterPostsByTag(tag) {
-      console.log(tag)
+      this.currentTab = tag
     },
     enterCards() {
       new Scene(
@@ -120,5 +125,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/scss/pages/blog.scss';
+@import '../../assets/scss/pages/blog.scss';
 </style>

@@ -1,7 +1,30 @@
+const TerserJSPlugin = require('terser-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const gzip = require('@gfx/zopfli').gzip
+const CompressionPlugin = require('compression-webpack-plugin')
+
 require('dotenv').config()
+
+const glob = require('glob')
+const pkg = require('./package')
+const files = glob.sync('**/*.md', { cwd: 'articles' })
+
+function getSlugs(post, _) {
+  const slug = post.substr(0, post.lastIndexOf('.'))
+  return `/blog/post/${slug}`
+}
 
 module.exports = {
   mode: 'universal',
+  generate: {
+    routes: () => files.map(getSlugs)
+  },
+  performance: {
+    gzip: {
+      threshold: -1
+    }
+  },
   router: {
     middleware: 'pages'
   },
@@ -17,14 +40,14 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: pkg.name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
+        content: pkg.description
       }
     ],
     link: [
@@ -70,6 +93,7 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/apollo',
     '@nuxtjs/dotenv',
+    '@nuxtjs/markdownit',
     '@nuxtjs/pwa',
     ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
     [
@@ -89,6 +113,14 @@ module.exports = {
       }
     ]
   ],
+  render: {
+    compressor: {
+      level: 9,
+      threshold: 14290,
+      chunkSize: 120,
+      minRatio: 0.8
+    }
+  },
   apollo: {
     tokenName: process.env.APOLLO_KEY,
     cookieAttributes: {
@@ -136,9 +168,50 @@ module.exports = {
    ** Build configuration
    */
   build: {
+    devtools: true,
+    plugins: [
+      new CompressionPlugin({
+        compressionOptions: { level: 11 },
+        threshold: 1250,
+        minRatio: 0.8,
+        algorithm(input, compressionOptions, callback) {
+          return gzip(input, compressionOptions, callback)
+        }
+      }),
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[id].css',
+        ignoreOrder: false
+      })
+    ],
+    optimization: {
+      minimizer: [
+        new TerserJSPlugin({
+          test: /\.(js)$/
+        }),
+        new OptimizeCSSAssetsPlugin({
+          preset: ['default', { discardComments: { removeAll: true } }]
+        })
+      ],
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
+    },
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.md$/,
+        use: ['raw-loader']
+      })
+    }
   }
 }

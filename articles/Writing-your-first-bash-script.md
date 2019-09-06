@@ -1,3 +1,4 @@
+#Title
 Bash scripting is an extremely useful and powerful part of system administration and development. It might seem scary the first time you do it as it was for me but bear with me as this is not meant to be an extensive guide to bash scripting, but just a straightforward guide to getting started with making your first script and learning some basic bash syntax.
 
 Bash is a Unix shell, which is a command-line interface (CLI) for interacting with an operating system (OS) is available by default on Linux and macOS operating systems but it can also be turned on as a feature on Windows 10. Any command that you can run from the command line can be used in a bash script and the other way around too.
