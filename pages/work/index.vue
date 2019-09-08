@@ -18,9 +18,7 @@
     </div>
     <ul class="work-links-wrapper flex">
       <li class="work-link">
-        <router-link to="/work/agrimanager">
-          <work-card :info="work" />
-        </router-link>
+        <work-card :info="work" />
       </li>
     </ul>
   </div>
@@ -40,7 +38,8 @@ export default {
     work: {
       title: 'Agrimanager',
       type: 'Web Application',
-      url: '/work/agrimanager'
+      url: '/work/agrimanager',
+      imageSrc: '/bg_agri.jpg'
     }
   })
 }

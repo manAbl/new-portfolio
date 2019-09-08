@@ -1,16 +1,17 @@
-#Title
+# Writing your first bash script
+
 Bash scripting is an extremely useful and powerful part of system administration and development. It might seem scary the first time you do it as it was for me but bear with me as this is not meant to be an extensive guide to bash scripting, but just a straightforward guide to getting started with making your first script and learning some basic bash syntax.
 
 Bash is a Unix shell, which is a command-line interface (CLI) for interacting with an operating system (OS) is available by default on Linux and macOS operating systems but it can also be turned on as a feature on Windows 10. Any command that you can run from the command line can be used in a bash script and the other way around too.
 
 ---------------------------------------------------------------------------------
 
-**Requirements**
+## Requirements
 
 - A basic command line knowledge is required. Although I'll be explaining what command does what, as I go.
 
 
-**Goals**
+## Goals
 
 In this tutorial, we're going to:
 
@@ -20,7 +21,6 @@ In this tutorial, we're going to:
 I'll be using `/Users/mblanco` for all examples, but it will be `/Users/your_username` for you. So without anything more to say let's get into it
 
 1) **Create a bin directory**
-------------------------------------------------------------------
 
 The first step is to create a bin directory. bin is the standard naming convention of a subdirectory that contains executable programs.
 
@@ -32,8 +32,8 @@ Create a bin folder.
 cd ~      # this takes us to /Users/mblanco
 mkdir bin # this creates /Users/mblanco/bin
 ```
-2) **Export your bin directory to the PATH**
------------------------------------------------------------------------
+
+2)**Export your bin directory to the PATH**
 
 Open the file .bash_profile by typing `.bash_profile`, which will be located at /Users/mblanco/.bash_profile, and add this line to the file. If .bash_profile doesn't exist, create it.
 
@@ -41,23 +41,26 @@ Open the file .bash_profile by typing `.bash_profile`, which will be located at 
 export PATH=$PATH:/Users/mblanco/bin
 ```
 
-3) **Create a script file**
---------------------------------------------------------------------------
+3)**Create a script file**
 
 Go to your bin folder located in `/Users/mblanco`.
 
 ```bash
 cd bin
 ```
+
 Create a file called hello-world with no extension.
 
 ```bash
 touch hello-world
 ```
+
 Open the file in your text editor of choice and type the following.
+
 ```phyton
 #!/bin/bash
 ```
+
 A bash script must always begin with #!/bin/bash to signify that the script should run with bash as opposed to any other shell.
 
 ```bash
@@ -66,8 +69,7 @@ A bash script must always begin with #!/bin/bash to signify that the script shou
 echo Hello, World!
 ```
 
-4) **Execute the bash file**
---------------------------------------------------------------------------
+4)**Execute the bash file**
 
 We can run the file in the terminal with `hello-world`. If it doesn't work we have to make it an executable file by changing the permissions `chmod u+x hello-world`. When you run the command, it will output whatever you put after the `echo`
 
@@ -79,14 +81,11 @@ $ hello-world
 Hello, World!
 ```
 
-![](https://media.giphy.com/media/hZj44bR9FVI3K/giphy.gif?raw=true)
+! [](https://media.giphy.com/media/hZj44bR9FVI3K/giphy.gif?raw=true)
 
 Congrats!! We just made our first bash file :)
 
-
-
-**Variables**
----------------------------------------------------------------------------
+## Variables
 
 A variable is declared without a $, but has a $ when invoked. Let's edit our hello-world file to use a variable
 
@@ -94,6 +93,7 @@ A variable is declared without a $, but has a $ when invoked. Let's edit our hel
 word = "world"
 Hello, $word!
 ```
+
 ```bash
 mblanco@dev:~/bin
 
@@ -102,14 +102,11 @@ $ hello-world
 Hello, world!
 ```
 
-_Strings do not need to use single or double quotes by default. However, single and double quoted strings work as well. A single quoted string will not interpolate variables, but a double quoted string will_
+## _Strings do not need to use single or double quotes by default. However, single and double quoted strings work as well. A single quoted string will not interpolate variables, but a double quoted string will_
 
+## Taking user input
 
-
-**Taking user input**
----------------------------------------------------------------------------
-
-![](https://media.giphy.com/media/DgLsbUL7SG3kI/giphy.gif?raw=true)
+! [](https://media.giphy.com/media/DgLsbUL7SG3kI/giphy.gif?raw=true)
 
 We declared a variable in the last example, but we can also have the user set the value of a variable dynamically using the `read` command so instead of having the script to say Hello, World!, we can ask the name of the person calling the script and output that name
 
@@ -122,6 +119,7 @@ read who
 
 echo Hello, $who!
 ```
+
 ```bash
 mblanco@dev:~$ hello-world
 Who is this?
@@ -129,13 +127,12 @@ Manuel
 Hello, Manuel!
 ```
 
-**Conditionals**
----------------------------------------------------------------------------
+## Conditionals
 
 According to Wikipedia:
 
 <blockquote>
-Conditionals are features of a programming language, which perform different computations or actions depending on whether a programmer-specified boolean condition evaluates to true or false
+  Conditionals are features of a programming language, which perform different computations or actions depending on whether a programmer-specified boolean condition evaluates to true or false
 </blockquote>
 
 Although bash is not a programming language but a command-line interface (CLI), you can do conditionals with it too. Here you can use if statements with the following keywords: if, then, else, and fi. With the condition inside square brackets.
@@ -166,6 +163,7 @@ Are you sure you are allowed to drink kid? How older are you?
 20
 You are just fine. Drinks up! 🍻
 ```
+
 Here's a list of operators for you to try different things:
 
 
@@ -179,11 +177,9 @@ Here's a list of operators for you to try different things:
 |    `-ge`      |     `>=`   |Greater than or equal|
 |    `-z`       |    ==null` |Is null              |
 
+## Looping
 
-**Looping**
---------------------------------------------------------------------------------
-
-![](https://media.giphy.com/media/3GuP496Wrkos8/giphy.gif?raw=true)
+! [](https://media.giphy.com/media/3GuP496Wrkos8/giphy.gif?raw=true)
 
 We'll create a version of the command `ls` (which makes a list of all the files and directories in your current address) but this one will only give us the names of the files.
 
@@ -200,6 +196,6 @@ done
 
 ---------------------------------------------------------------------------------
 
-**Conclusion**
+## Conclusion
 
 I hope this article has been helpful for you guys to get started with bash and see you next time🤘👋

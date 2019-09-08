@@ -1,8 +1,8 @@
-const TerserJSPlugin = require('terser-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const gzip = require('@gfx/zopfli').gzip
-const CompressionPlugin = require('compression-webpack-plugin')
+// const gzip = require('@gfx/zopfli').gzip
+// const TerserJSPlugin = require('terser-webpack-plugin')
+// const CompressionPlugin = require('compression-webpack-plugin')
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 require('dotenv').config()
 
@@ -20,11 +20,11 @@ module.exports = {
   generate: {
     routes: () => files.map(getSlugs)
   },
-  performance: {
-    gzip: {
-      threshold: -1
-    }
-  },
+  // performance: {
+  //   gzip: {
+  //     threshold: -1
+  //   }
+  // },
   router: {
     middleware: 'pages'
   },
@@ -91,7 +91,6 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/apollo',
     '@nuxtjs/dotenv',
     '@nuxtjs/markdownit',
     '@nuxtjs/pwa',
@@ -113,52 +112,14 @@ module.exports = {
       }
     ]
   ],
-  render: {
-    compressor: {
-      level: 9,
-      threshold: 14290,
-      chunkSize: 120,
-      minRatio: 0.8
-    }
-  },
-  apollo: {
-    tokenName: process.env.APOLLO_KEY,
-    cookieAttributes: {
-      secure: false
-    },
-    defaultOptions: {
-      $query: {
-        loadingKey: 'loading',
-        fetchPolicy: 'cache-and-network'
-      }
-    },
-    // optional
-    errorHandler: '~/plugins/apollo-error-handler.js',
-    // required
-    clientConfigs: {
-      default: {
-        // required
-        httpEndpoint: 'http://localhost:4000',
-        // optional
-        // See https://www.apollographql.com/docs/link/links/http.html#options
-        httpLinkOptions: {
-          credentials: 'same-origin'
-        },
-        // LocalStorage token
-        tokenName: 'apollo-token', // optional
-        // Enable Automatic Query persisting with Apollo Engine
-        persisting: false, // Optional
-        // Use websockets for everything (no HTTP)
-        // You need to pass a `wsEndpoint` for this to work
-        websocketsOnly: false // Optional
-      },
-      test: {
-        httpEndpoint: 'http://localhost:5000',
-        wsEndpoint: 'ws://localhost:5000',
-        tokenName: 'apollo-token'
-      }
-    }
-  },
+  // render: {
+  //   compressor: {
+  //     level: 9,
+  //     threshold: 14290,
+  //     chunkSize: 120,
+  //     minRatio: 0.8
+  //   }
+  // },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -170,40 +131,40 @@ module.exports = {
   build: {
     devtools: true,
     plugins: [
-      new CompressionPlugin({
-        compressionOptions: { level: 11 },
-        threshold: 1250,
-        minRatio: 0.8,
-        algorithm(input, compressionOptions, callback) {
-          return gzip(input, compressionOptions, callback)
-        }
-      }),
-      new MiniCssExtractPlugin({
-        filename: '[name].css',
-        chunkFilename: '[id].css',
-        ignoreOrder: false
-      })
+      // new CompressionPlugin({
+      //   compressionOptions: { level: 11 },
+      //   threshold: 1250,
+      //   minRatio: 0.8,
+      //   algorithm(input, compressionOptions, callback) {
+      //     return gzip(input, compressionOptions, callback)
+      //   }
+      // }),
+      // new MiniCssExtractPlugin({
+      //   filename: '[name].css',
+      //   chunkFilename: '[id].css',
+      //   ignoreOrder: false
+      // })
     ],
-    optimization: {
-      minimizer: [
-        new TerserJSPlugin({
-          test: /\.(js)$/
-        }),
-        new OptimizeCSSAssetsPlugin({
-          preset: ['default', { discardComments: { removeAll: true } }]
-        })
-      ],
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.(css|vue)$/,
-            chunks: 'all',
-            enforce: true
-          }
-        }
-      }
-    },
+    // optimization: {
+    //   minimizer: [
+    //     new TerserJSPlugin({
+    //       test: /\.(js)$/
+    //     }),
+    //     new OptimizeCSSAssetsPlugin({
+    //       preset: ['default', { discardComments: { removeAll: true } }]
+    //     })
+    //   ],
+    //   splitChunks: {
+    //     cacheGroups: {
+    //       styles: {
+    //         name: 'styles',
+    //         test: /\.(css|vue)$/,
+    //         chunks: 'all',
+    //         enforce: true
+    //       }
+    //     }
+    //   }
+    // },
     /*
      ** You can extend webpack config here
      */

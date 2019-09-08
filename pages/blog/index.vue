@@ -38,8 +38,8 @@
       class="right flex items-center flex-wrap flex-row content-start justify-center"
     >
       <div
-        v-for="card in posts"
-        :key="card"
+        v-for="(card, i) in posts"
+        :key="i"
         class="box-post m-2 hover:shadow cursor-pointer p-4 border-solid border border-gray-200"
         @click="$router.push(card.url)"
       >

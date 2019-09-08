@@ -16,7 +16,7 @@
       </g>
     </svg>
 
-    <img class="image" src="/pavel.jpg" />
+    <img class="image" :src="info.imageSrc" />
     <div class="description text-left">
       <h1 class="title text-white lg font-medium">
         {{ info.title }}

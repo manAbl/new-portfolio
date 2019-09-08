@@ -97,7 +97,7 @@
   top: 10vh;
   left: 10vw;
   transform: rotate(-15deg) scale(2.14);
-  height: 100vh;
+  height: 80vh;
   z-index: -1;
   width: 90vw;
   grid-column: 1 / 4;
@@ -108,18 +108,19 @@
   width: 100%;
   grid-row: 3;
   height: 86vh;
+  margin-top: 4.2rem;
   text-align: center;
   padding: 4rem 2rem;
   grid-column: 1 / span 4;
 
   display: grid;
-  grid-gap: 6rem;
-  margin-bottom: 5rem;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(3, 1fr);
 
   .title-wrapper {
     justify-content: space-between;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: -8.2rem;
     width: 28rem;
     padding: 1rem;
     grid-column: 1 / 4;
@@ -127,6 +128,8 @@
   }
 
   .work-card {
+    grid-row: 3/4;
+    align-self: end;
     grid-column: 1 /4;
     justify-self: center;
   }

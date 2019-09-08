@@ -107,7 +107,8 @@ export default {
     work: {
       title: 'Agrimanager',
       type: 'Web Application',
-      url: '/work/agrimanager'
+      url: '/work/agrimanager',
+      imageSrc: '/bg_agri.jpg'
     }
   }),
   mounted() {
