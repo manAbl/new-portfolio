@@ -7,16 +7,23 @@
   justify-content: space-evenly;
 
   .info-wrapper {
-    justify-self: center;
+    grid-row: 1;
     margin-top: 20vh;
+    margin-lefT: 5rem;
+    grid-column: 1 /2;
+    justify-self: start;
   }
 
   .work-links-wrapper {
-    width: 100%;
+    grid-row: 1;
     height: 100%;
+    align-self: end;
+    justify-self: end;
+    margin-right: 10rem;
+
+    align-items: center;
     flex-flow: row nowrap;
     justify-content: center;
-    align-items: center;
   }
 
   .work-link {
