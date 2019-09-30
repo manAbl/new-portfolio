@@ -75,22 +75,22 @@ export default {
   data: () => ({
     tags: ['All', 'Code', 'Design', 'Personal', 'Popular', 'Tools'],
     currentTab: 'All',
-    posts: [
-      {
-        title: 'Writing your first bash script',
-        description:
-          'Bash scripting is an extremely useful and powerful part of system administration and development. It might seem scary the first time you do it as it was for me but bear with me as this is not meant to be an extensive guide to bash scripting, but just a straightforward guide to getting started with making your first script and learning some basic bash syntax.',
-        date: 'Aug 28',
-        url: '/blog/Writing-your-first-bash-script'
-      }
-    ]
+    posts: []
   }),
+  asyncData({ app }) {
+    const res = app.$storyapi.get('cdn/stories/blog', {
+      version: 'draft'
+    })
+
+    if (res) return res
+    else return {}
+  },
   mounted() {
     this.enterCards()
   },
   methods: {
-    filterPostsByTag(tag) {
-      this.currentTab = tag
+    filterPostsByTag(tab) {
+      this.currentTab = tab
     },
     enterCards() {
       new Scene(

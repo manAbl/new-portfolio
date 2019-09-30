@@ -93,6 +93,10 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
     '@nuxtjs/markdownit',
+    [
+      'storyblok-nuxt',
+      { accessToken: process.env.STORYBLOK_KEY, cacheProvider: 'memory' }
+    ],
     '@nuxtjs/pwa',
     ['@nuxtjs/component-cache', { maxAge: 1000 * 60 * 60 }],
     [

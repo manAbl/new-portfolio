@@ -27,6 +27,7 @@
     "mapbox-gl": "^1.2.1",
     "nuxt": "^2.0.0",
     "scenejs": "^1.1.4",
+    "storyblok-nuxt": "^1.0.1",
     "vue": "2.6.6",
     "vue-server-renderer": "2.6.6",
     "vue-template-compiler": "2.6.6"
