@@ -1,24 +1,23 @@
 <template>
-  <div class="main-wrapper">
+  <div class="main-wrapper no-padding">
     <div class="left">
       <h3 class="text-gray font-thin uppercase">Contact</h3>
-      <h1 class="title xl">Get in touch<span class="text-red">:</span></h1>
+      <h1 class="title xl">
+        Get in touch
+        <span class="text-red">:</span>
+      </h1>
       <div class="information">
-        <h3 class="text-base text-red">
-          Contact Details:
-        </h3>
+        <h3 class="text-base text-red">Contact Details:</h3>
         <a
           href="mailto:manuel.22.lamas@gmail.com"
           class="font-thin text-md block margin1 hover:underline"
+          >manuel.22.lamas@gmail.com</a
         >
-          manuel.22.lamas@gmail.com
-        </a>
         <a
           href="tel: +57 305 3648811"
           class="font-thin text-md block margin-top-half-rem hover:underline"
+          >+57 305 3648811</a
         >
-          +57 305 3648811
-        </a>
         <footer>© {{ year }} Manuel Blanco</footer>
       </div>
     </div>

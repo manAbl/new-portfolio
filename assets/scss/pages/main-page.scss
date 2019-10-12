@@ -1,13 +1,15 @@
 @import '../helpers/_atomic-classes';
 
 .container {
+  &.grid {
+    padding-top: 6rem;
+  }
   .description {
     width: 26rem;
-    padding: 1.2rem;
     height: fit-content;
     place-self: center;
     .title {
-      margin-bottom: 1rem
+      margin-bottom: 1rem;
     }
   }
 

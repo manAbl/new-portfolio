@@ -1,2 +1,31 @@
 @import '../helpers/_atomic-classes';
 @import '../base/_variables';
+
+.main-wrapper {
+  background: #d5d5d5;
+}
+
+.grid {
+  max-width: 112rem;
+  padding: 0 0 4rem 0;
+}
+
+.image-description {
+  left: -4rem;
+  top: 4rem;
+}
+
+main {
+  height: 100vh;
+  padding: 2rem 4rem;
+}
+
+.more-info {
+  &:hover {
+    color: #ccc;
+    .icon-md {
+      color: whitesmoke;
+      transform: translateY(0.2rem);
+    }
+  }
+}

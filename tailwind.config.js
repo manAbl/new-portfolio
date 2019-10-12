@@ -6,9 +6,7 @@
  */
 module.exports = {
   theme: {
-    container: {
-      padding: '1.2rem'
-    },
+    container: false,
     fontWeight: {
       'extra-light': 100,
       thin: 200,

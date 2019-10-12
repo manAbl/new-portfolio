@@ -27,7 +27,7 @@ body {
   &::after {
     content: '';
     width: 1.4rem;
-    height: .2rem;
+    height: 0.2rem;
     position: absolute;
     bottom: -0.2rem;
     z-index: -1;
@@ -57,4 +57,9 @@ a {
 }
 .page-leave-active {
   animation: fadeOutDown 0.8s;
+}
+
+.main-wrapper {
+  height: 100vh;
+  padding-top: 10rem;
 }

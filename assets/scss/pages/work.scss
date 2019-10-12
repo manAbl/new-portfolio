@@ -3,13 +3,12 @@
 
 .main-wrapper {
   height: 80vh;
-  padding: 1.6rem;
   justify-content: space-evenly;
 
   .info-wrapper {
     grid-row: 1;
     margin-top: 20vh;
-    margin-lefT: 5rem;
+    margin-left: 5rem;
     grid-column: 1 /2;
     justify-self: start;
   }

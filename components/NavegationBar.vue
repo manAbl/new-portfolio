@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-main-wrapper container mx-auto" role="main-navegation">
+  <nav class="nav-main-wrapper absolute w-full" role="main-navegation">
     <nuxt-link id="logo" to="/" exact-active-class="anlk">
       <img src="/logo-2.png" alt="logo-image" />
     </nuxt-link>
