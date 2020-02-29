@@ -1,45 +1,19 @@
 @import '../helpers/_atomic-classes';
 @import '../base/_variables';
 
-.container {
-  &.grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    padding: 2rem 0;
-    grid-gap: 5rem;
-  }
-  justify-items: stretch !important;
-  .title {
-    text-align: center;
-    font-size: 42px !important;
-  }
-  .title,
+.inner-wrapper {
+  margin-top: 12vh;
+  position: relative;
+
   .svg-wrapper {
-    grid-row: 1/2;
+    margin-right: 1rem;
   }
-  .svg-wrapper {
-    width: 100%;
-    height: 100%;
-    max-width: 120rem;
-  }
+}
 
-  .description {
-    width: 40rem;
-    display: flex;
-    padding: 2rem;
-    align-items: center;
-    justify-self: center;
-    flex-flow: column nowrap;
-    justify-content: space-between;
+.description {
+  max-width: 40vw;
+}
 
-    .text-2xl {
-      margin-bottom: 2.4rem;
-    }
-
-    #map {
-      width: 20rem;
-      height: 20rem;
-      clip-path: circle(50% at 50% 50%);
-    }
-  }
+.map {
+  height: 50vh;
 }

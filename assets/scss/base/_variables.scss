@@ -3,4 +3,31 @@ $gray-lighter: lighten($gray, 20%);
 $charcoal: #241f1c;
 $berry: rgb(228, 90, 101);
 
+$white-full: white;
+$blue: #2196f3;
+$dark-blue: #255fb9;
+$white-partial: #fafafa;
+$white-profile: #f1f1f1;
+$white-hsl: hsla(0, 0%, 100%, 0.7);
+
+$light-charcoal: #424242;
+$dark-charcoal: #303030;
+$gray: #616161;
+$grey-ligthen: #e0e0e0;
+
+$light-yellow: #f7dc82;
+$dark-yellow: #f3c52c;
+
+$cubic-bezier: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+$regular-transition: 320ms ease;
+
+$berry: #b10f0f;
+$blue-user-interface: #1e419a;
+$light-hover: lighten(rgba(0, 0, 0, 0.2), 12%);
+
 $transition: all 320ms ease-in-out;
+$break-xs: 599px;
+$break-sm: 959px;
+$break-md: 1263px;
+$break-lg: 1903px;
+$break-xl: 1999px;
